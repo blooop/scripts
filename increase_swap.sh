@@ -3,9 +3,9 @@
 echo "Disabling the swap file..."
 sudo swapoff /swapfile
 
-# Create a 4GB swap file
-echo "Allocating 16GB for the swap file..."
-sudo fallocate -l 16G /swapfile
+# Create a 32GB swap file
+echo "Allocating 32GB for the swap file..."
+sudo fallocate -l 32G /swapfile
 
 # Mark the file as a swap file
 echo "Marking the file as a swap file..."
