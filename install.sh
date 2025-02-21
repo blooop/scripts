@@ -11,6 +11,7 @@ curl -fsSL https://pixi.sh/install.sh | bash
 
 # Install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.local/bin/env
 
 # Install Rust and Cargo
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
