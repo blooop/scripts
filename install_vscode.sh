@@ -30,7 +30,7 @@ fi
 # Add to PATH in .bashrc if not already there
 if ! grep -q "$DEVCONTAINER_CLI_PATH" "$HOME/.bashrc"; then
     echo "Adding Dev Containers CLI to PATH..."
-    echo 'export PATH="$HOME/.vscode/extensions/ms-vscode-remote.remote-containers-*/bin:$PATH"' >> ~/.bashrc
+    echo 'export PATH="$DEVCONTAINER_CLI_PATH:$PATH"' >> ~/.bashrc
     echo "Dev Containers CLI path added to .bashrc"
 fi
 
