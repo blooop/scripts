@@ -4,7 +4,7 @@ sudo apt update
 
 #basic dev tools
 # sudo apt install -y curl python3-pip tmux byobu neovim git git-lfs ripgrep pinta nvtop htop net-tools 
-sudo apt install -y curl tmux byobu neovim git git-lfs nvtop htop net-tools 
+sudo apt install -y curl tmux byobu neovim git git-lfs nvtop htop net-tools pipx 
 
 # Install pixi
 curl -fsSL https://pixi.sh/install.sh | bash
@@ -22,9 +22,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 source $HOME/.local/bin/env
 
 #set up rocker development environment tool
-uv tool install rocker 
-uv tool install rockerc 
-uv tool install rockervsc 
+pipx install --include-deps rockervsc
 
 # Install Rust and Cargo
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
