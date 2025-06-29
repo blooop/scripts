@@ -3,13 +3,19 @@
 sudo apt update
 
 #basic dev tools
-sudo apt install -y curl python3-pip tmux byobu neovim git git-lfs ripgrep pinta nvtop htop net-tools 
+# sudo apt install -y curl python3-pip tmux byobu neovim git git-lfs ripgrep pinta nvtop htop net-tools 
+sudo apt install -y curl tmux byobu neovim git git-lfs nvtop htop net-tools 
 
 # Install pixi
 curl -fsSL https://pixi.sh/install.sh | bash
 
+source $HOME/.bashrc 
+
 #install basic dev tools
 pixi global install fzf fd-find ripgrep
+
+# Set up fzf key bindings and fuzzy completion
+grep -qxF 'eval "$(fzf --bash)"' ~/.bashrc || echo -e '\n# Set up fzf key bindings and fuzzy completion\neval "$(fzf --bash)"' >> ~/.bashrc
 
 # Install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -31,4 +37,3 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 
 snap install slack spotify
-sudo snap install code --classic
