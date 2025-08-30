@@ -10,6 +10,9 @@ sudo apt install gnome-keyring
 # Install pixi
 curl -fsSL https://pixi.sh/install.sh | bash
 
+# Add pixi autocompletion to bashrc
+echo 'eval "$(pixi completion --shell bash)"' >> ~/.bashrc
+
 source ~/.bashrc
 
 #install basic dev tools
