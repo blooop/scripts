@@ -5,6 +5,8 @@ sudo apt update
 #basic dev tools
 sudo apt install -y curl python3-pip tmux byobu neovim git git-lfs ripgrep pinta nvtop htop net-tools terminator
 
+sudo apt install gnome-keyring
+
 # Install pixi
 curl -fsSL https://pixi.sh/install.sh | bash
 
