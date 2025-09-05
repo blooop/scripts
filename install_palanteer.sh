@@ -17,6 +17,6 @@ cmake .. -DCMAKE_BUILD_TYPE=Release
 make -j$(nproc) install
 sudo cp bin/palanteer /usr/local/bin/
 cd ../..
-# rm -rf palanteer
+rm -rf palanteer
 
 echo "Palanteer installation complete!"
