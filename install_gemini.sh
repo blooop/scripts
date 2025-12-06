@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Minimal install: wget, nvm (Node LTS), Claude CLI, Gemini CLI.
+# Minimal install: wget, nvm (Node LTS),  Gemini CLI.
+
 set -e
 
 echo "==> Ensure Node (install via nvm only if missing)"
@@ -34,16 +35,14 @@ if [ "$nver_major" -lt 20 ]; then
 	fi
 fi
 
-echo "==> Install Claude CLI"
-npm install -g @anthropic-ai/claude-code
-
 echo "==> Install Gemini CLI (@google/gemini-cli)"
 npm install -g @google/gemini-cli
 
 echo "==> Versions"
 node -v || true
 npm -v || true
-command -v claude >/dev/null && echo "claude installed" || echo "claude missing"
+
 command -v gemini >/dev/null && echo "gemini installed" || echo "gemini missing"
 
-echo "Done. Open a new shell or source nvm to use 'claude' and 'gemini'."
+echo "Done. Open a new shell or source nvm to use and 'gemini'."
+

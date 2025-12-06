@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+# Install pixi
+curl -fsSL https://pixi.sh/install.sh | bash
+# Add pixi autocompletion to bashrc
+echo 'eval "$(pixi completion --shell bash)"' >> ~/.bashrc
+# install basic dev tools
+source ~/.bashrc
+
+ # Ensure pixi is in PATH for this script
+export PATH="$HOME/.pixi/bin:$PATH"
+
+pixi global install fzf fd-find ripgrep byobu nvtop htop
+
+# Set up fzf key bindings and fuzzy completion
+echo 'eval "$(fzf --bash)"' >> ~/.bashrc
