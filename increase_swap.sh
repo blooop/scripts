@@ -18,3 +18,4 @@ sudo swapon /swapfile
 # Display the current swap file usage and size
 echo "Current swap file status:"
 swapon --show
+

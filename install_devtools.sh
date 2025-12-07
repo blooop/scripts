@@ -9,7 +9,9 @@ if ! command -v pixi &> /dev/null; then
 fi
 
 # Install global dev tools using pixi
-pixi global install fzf fd-find ripgrep byobu nvtop htop chezmoi lazygit lazydocker
+pixi global install fzf fd-find ripgrep byobu nvtop htop chezmoi lazygit lazydocker git git-lfs
+
+pixi global install --channel https://prefix.dev/github-releases neovim
 
 #+ Set up fzf key bindings and fuzzy completion
 echo 'eval "$(fzf --bash)"' >> ~/.bashrc
