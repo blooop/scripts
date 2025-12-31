@@ -1,4 +1,4 @@
 #!/bin/bash
 
 sudo apt update
-sudo apt install -y gnome-keyring python3-pip net-tools terminator 
+sudo apt install -y python3-pip net-tools terminator
