@@ -2,3 +2,5 @@
 # Minimal install: wget, nvm (Node LTS), Claude CLI, Gemini CLI.
 
 curl -fsSL https://claude.ai/install.sh | bash
+
+export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
