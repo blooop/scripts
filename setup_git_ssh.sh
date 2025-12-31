@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ssh-keygen
-cat ~/.ssh/id_rsa.pub
+cat ~/.ssh/id_ed25519.pub
 
 sudo apt install -y git git-lfs
 
