@@ -6,7 +6,7 @@ sudo apt update
 sudo apt install fsearch
 
 #disk space usage
-sudo apt install filelight
+sudo apt install -y filelight qml-module-qtquick-shapes qml-module-org-kde-kcoreaddons
 
 #better file manager with tabs and inbuilt console
 sudo apt install -y dolphin konsole 
