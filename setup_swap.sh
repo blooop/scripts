@@ -25,8 +25,8 @@ echo "  Swapfile active at ${SWAPFILE_SIZE}."
 echo ""
 echo "=== Installing sysctl tuning ==="
 tee /etc/sysctl.d/99-nvme-swap.conf <<'EOF'
-# Moderate NVMe swap tuning
-vm.swappiness=100
+# NVMe swap tuning — keep app pages resident, swap only under real pressure
+vm.swappiness=10
 vm.page-cluster=0
 vm.vfs_cache_pressure=100
 EOF

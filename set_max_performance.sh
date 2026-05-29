@@ -15,16 +15,16 @@ done
 echo "Setting NVIDIA GPU to Prefer Maximum Performance..."
 nvidia-settings -a "[gpu:0]/GPUPowerMizerMode=1" >/dev/null 2>&1 || true
 
-echo "Installing systemd service..."
+# Systemd service for CPU governor (runs before desktop)
+echo "Installing systemd service for CPU..."
 cat > /etc/systemd/system/${SERVICE_NAME}.service <<'EOF'
 [Unit]
-Description=Set CPU and GPU to maximum performance
-After=multi-user.target nvidia-persistenced.service
+Description=Set CPU governor to performance
+After=multi-user.target
 
 [Service]
 Type=oneshot
 ExecStart=/bin/bash -c 'for gov in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do echo performance > "$gov"; done'
-ExecStart=/usr/bin/nvidia-settings -a "[gpu:0]/GPUPowerMizerMode=1"
 RemainAfterExit=yes
 
 [Install]
@@ -34,4 +34,16 @@ EOF
 systemctl daemon-reload
 systemctl enable ${SERVICE_NAME}.service
 
-echo "Done. Max performance applied now and on every boot."
+# Autostart entry for GPU (needs display session)
+AUTOSTART_DIR="$(eval echo ~${SUDO_USER:-$USER})/.config/autostart"
+mkdir -p "$AUTOSTART_DIR"
+cat > "$AUTOSTART_DIR/nvidia-max-performance.desktop" <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=NVIDIA Max Performance
+Exec=nvidia-settings -a "[gpu:0]/GPUPowerMizerMode=1"
+Hidden=false
+X-GNOME-Autostart-enabled=true
+EOF
+
+echo "Done. CPU governor persists via systemd, GPU via session autostart."
