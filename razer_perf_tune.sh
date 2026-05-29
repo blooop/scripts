@@ -95,9 +95,9 @@ fi
 tee "$SYSCTL_CONF" > /dev/null <<'EOF'
 # Razer Blade perf tuning — Ubuntu 24.04 + NVMe + zswap
 
-# With zswap active, 100 is correct: "swap" first means compress-in-RAM,
-# which frees pages for file cache without disk I/O.
-vm.swappiness = 100
+# Keep app pages resident — only swap under real pressure.
+# High swappiness + heavy NVMe I/O (builds, Docker) causes stalls.
+vm.swappiness = 10
 
 # Single-page swap I/O — NVMe random access is fast, no need to batch.
 vm.page-cluster = 0
@@ -162,7 +162,7 @@ for name in claude containerd dockerd Sim; do
         renice 10 -p "$pid" > /dev/null 2>&1
         ionice -c 2 -n 6 -p "$pid" 2>/dev/null
     done
-    count=$(pgrep -cx "$name" 2>/dev/null || echo 0)
+    count=$(pgrep -cx "$name" 2>/dev/null) || count=0
     [[ "$count" -gt 0 ]] && echo "  $name ($count procs) → nice 10, ionice best-effort/6"
 done
 
