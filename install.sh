@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Call sub-install scripts
 set -e
 
@@ -13,3 +12,4 @@ set -e
 ./install_slack.sh
 ./install_spotify.sh
 ./set_default_terminal.sh
+./install_claude.sh
